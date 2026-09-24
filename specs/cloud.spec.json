@@ -41541,10 +41541,11 @@
                             "example": true
                           },
                           "assignee_type": {
-                            "description": "Type of resource the [Primary IP](#tag/primary-ips) is assigned to.\n\nAs of 01 August 2026 `unassigned` will be returned if the [Primary IP](#tag/primary-ips) is not assigned.\n",
+                            "description": "Type of resource the [Primary IP](#tag/primary-ips) is assigned to.\n\nAs of 23 September 2026 `unassigned` is returned if the [Primary IP](#tag/primary-ips) is not assigned.\n",
                             "type": "string",
                             "enum": [
-                              "server"
+                              "server",
+                              "unassigned"
                             ],
                             "example": "server"
                           },
@@ -41839,7 +41840,8 @@
                     "description": "Type of resource to assign the [Primary IP](#tag/primary-ips) to.\n\nOmitted if the [Primary IP](#tag/primary-ips) should not get assigned.\n",
                     "type": "string",
                     "enum": [
-                      "server"
+                      "server",
+                      "unassigned"
                     ],
                     "example": "server"
                   },
@@ -42040,10 +42042,11 @@
                           "example": true
                         },
                         "assignee_type": {
-                          "description": "Type of resource the [Primary IP](#tag/primary-ips) is assigned to.\n\nAs of 01 August 2026 `unassigned` will be returned if the [Primary IP](#tag/primary-ips) is not assigned.\n",
+                          "description": "Type of resource the [Primary IP](#tag/primary-ips) is assigned to.\n\nAs of 23 September 2026 `unassigned` is returned if the [Primary IP](#tag/primary-ips) is not assigned.\n",
                           "type": "string",
                           "enum": [
-                            "server"
+                            "server",
+                            "unassigned"
                           ],
                           "example": "server"
                         },
@@ -43895,10 +43898,11 @@
                           "example": true
                         },
                         "assignee_type": {
-                          "description": "Type of resource the [Primary IP](#tag/primary-ips) is assigned to.\n\nAs of 01 August 2026 `unassigned` will be returned if the [Primary IP](#tag/primary-ips) is not assigned.\n",
+                          "description": "Type of resource the [Primary IP](#tag/primary-ips) is assigned to.\n\nAs of 23 September 2026 `unassigned` is returned if the [Primary IP](#tag/primary-ips) is not assigned.\n",
                           "type": "string",
                           "enum": [
-                            "server"
+                            "server",
+                            "unassigned"
                           ],
                           "example": "server"
                         },
@@ -44288,10 +44292,11 @@
                           "example": true
                         },
                         "assignee_type": {
-                          "description": "Type of resource the [Primary IP](#tag/primary-ips) is assigned to.\n\nAs of 01 August 2026 `unassigned` will be returned if the [Primary IP](#tag/primary-ips) is not assigned.\n",
+                          "description": "Type of resource the [Primary IP](#tag/primary-ips) is assigned to.\n\nAs of 23 September 2026 `unassigned` is returned if the [Primary IP](#tag/primary-ips) is not assigned.\n",
                           "type": "string",
                           "enum": [
-                            "server"
+                            "server",
+                            "unassigned"
                           ],
                           "example": "server"
                         },
@@ -46978,7 +46983,7 @@
                                     "example": "1.2.3.4"
                                   },
                                   "blocked": {
-                                    "description": "If the IP is blocked by our anti abuse dept.",
+                                    "description": "Whether the IP is blocked by our abuse department.",
                                     "type": "boolean",
                                     "example": false
                                   },
@@ -47015,7 +47020,7 @@
                                     "example": "2001:db8::/64"
                                   },
                                   "blocked": {
-                                    "description": "If the IP is blocked by our anti abuse dept.",
+                                    "description": "Whether the IP is blocked by our abuse department.",
                                     "type": "boolean",
                                     "example": false
                                   },
@@ -48406,7 +48411,7 @@
                                   "example": "1.2.3.4"
                                 },
                                 "blocked": {
-                                  "description": "If the IP is blocked by our anti abuse dept.",
+                                  "description": "Whether the IP is blocked by our abuse department.",
                                   "type": "boolean",
                                   "example": false
                                 },
@@ -48443,7 +48448,7 @@
                                   "example": "2001:db8::/64"
                                 },
                                 "blocked": {
-                                  "description": "If the IP is blocked by our anti abuse dept.",
+                                  "description": "Whether the IP is blocked by our abuse department.",
                                   "type": "boolean",
                                   "example": false
                                 },
@@ -50721,7 +50726,7 @@
                                   "example": "1.2.3.4"
                                 },
                                 "blocked": {
-                                  "description": "If the IP is blocked by our anti abuse dept.",
+                                  "description": "Whether the IP is blocked by our abuse department.",
                                   "type": "boolean",
                                   "example": false
                                 },
@@ -50758,7 +50763,7 @@
                                   "example": "2001:db8::/64"
                                 },
                                 "blocked": {
-                                  "description": "If the IP is blocked by our anti abuse dept.",
+                                  "description": "Whether the IP is blocked by our abuse department.",
                                   "type": "boolean",
                                   "example": false
                                 },
@@ -51961,7 +51966,7 @@
                                   "example": "1.2.3.4"
                                 },
                                 "blocked": {
-                                  "description": "If the IP is blocked by our anti abuse dept.",
+                                  "description": "Whether the IP is blocked by our abuse department.",
                                   "type": "boolean",
                                   "example": false
                                 },
@@ -51998,7 +52003,7 @@
                                   "example": "2001:db8::/64"
                                 },
                                 "blocked": {
-                                  "description": "If the IP is blocked by our anti abuse dept.",
+                                  "description": "Whether the IP is blocked by our abuse department.",
                                   "type": "boolean",
                                   "example": false
                                 },
