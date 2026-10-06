@@ -19143,6 +19143,17 @@
                                 "description": "IP address (v4).",
                                 "type": "object",
                                 "properties": {
+                                  "id": {
+                                    "description": "ID of the [Primary IP](#tag/primary-ips) assigned to this Load Balancer.\n\n`null` if the IP address is still managed by the system and is not a [Primary IP](#tag/primary-ips) yet.\n",
+                                    "type": [
+                                      "integer",
+                                      "null"
+                                    ],
+                                    "format": "int64",
+                                    "minimum": 1,
+                                    "maximum": 9007199254740991,
+                                    "example": 42
+                                  },
                                   "ip": {
                                     "description": "IP address (v4) of this Load Balancer.",
                                     "type": [
@@ -19150,6 +19161,11 @@
                                       "null"
                                     ],
                                     "example": "1.2.3.4"
+                                  },
+                                  "blocked": {
+                                    "description": "Whether the IP is blocked by our abuse department.",
+                                    "type": "boolean",
+                                    "example": false
                                   },
                                   "dns_ptr": {
                                     "description": "Reverse DNS PTR entry for the IPv4 address of this Load Balancer.",
@@ -19161,7 +19177,9 @@
                                   }
                                 },
                                 "required": [
+                                  "id",
                                   "ip",
+                                  "blocked",
                                   "dns_ptr"
                                 ]
                               },
@@ -19169,6 +19187,17 @@
                                 "description": "IP address (v6).",
                                 "type": "object",
                                 "properties": {
+                                  "id": {
+                                    "description": "ID of the [Primary IP](#tag/primary-ips) assigned to this Load Balancer.\n\n`null` if the IP address is still managed by the system and is not a [Primary IP](#tag/primary-ips) yet.\n",
+                                    "type": [
+                                      "integer",
+                                      "null"
+                                    ],
+                                    "format": "int64",
+                                    "minimum": 1,
+                                    "maximum": 9007199254740991,
+                                    "example": 42
+                                  },
                                   "ip": {
                                     "description": "IP address (v6) of this Load Balancer.",
                                     "type": [
@@ -19176,6 +19205,11 @@
                                       "null"
                                     ],
                                     "example": "2001:db8::1"
+                                  },
+                                  "blocked": {
+                                    "description": "Whether the IP is blocked by our abuse department.",
+                                    "type": "boolean",
+                                    "example": false
                                   },
                                   "dns_ptr": {
                                     "description": "Reverse DNS PTR entry for the IPv6 address of this Load Balancer.",
@@ -19187,7 +19221,9 @@
                                   }
                                 },
                                 "required": [
+                                  "id",
                                   "ip",
+                                  "blocked",
                                   "dns_ptr"
                                 ]
                               }
@@ -20742,7 +20778,7 @@
       "post": {
         "operationId": "create_load_balancer",
         "summary": "Create a Load Balancer",
-        "description": "Creates a Load Balancer.\n\n#### Operation specific errors\n\n| Status | Code | Description |\n| --- | --- | --- |\n| `412` | `source_port_already_used` | The source port you are trying to add is already in use |\n| `422` | `ip_not_owned` | The IP is not owned by the owner of the project of the Load Balancer |\n| `422` | `load_balancer_not_attached_to_network` | The Load Balancer is not attached to a network |\n| `422` | `resolve_cloud_private_targets_error` | The server you are trying to add as a target is not attached to the same network as the Load Balancer |\n| `422` | `resolve_cloud_public_targets_error` | The server that you are trying to add as a public target does not have a public IPv4 address |\n| `422` | `target_already_defined` | The Load Balancer target you are trying to define is already defined |\n",
+        "description": "Creates a Load Balancer.\n\n#### Operation specific errors\n\n| Status | Code | Description |\n| --- | --- | --- |\n| `412` | `source_port_already_used` | The source port you are trying to add is already in use |\n| `412` | `primary_ip_version_mismatch` | The specified Primary IP has the wrong IP version |\n| `422` | `ip_not_owned` | The IP is not owned by the owner of the project of the Load Balancer |\n| `422` | `load_balancer_not_attached_to_network` | The Load Balancer is not attached to a network |\n| `422` | `resolve_cloud_private_targets_error` | The server you are trying to add as a target is not attached to the same network as the Load Balancer |\n| `422` | `resolve_cloud_public_targets_error` | The server that you are trying to add as a public target does not have a public IPv4 address |\n| `422` | `target_already_defined` | The Load Balancer target you are trying to define is already defined |\n| `422` | `primary_ip_assigned` | The specified Primary IP is already assigned to a resource |\n| `422` | `primary_ip_blocked` | The specified Primary IP is blocked |\n| `422` | `primary_ip_location_mismatch` | The specified Primary IP is bound to a different Location than the Load Balancer |\n",
         "tags": [
           "Load Balancers"
         ],
@@ -21496,6 +21532,35 @@
                     "type": "boolean",
                     "example": true
                   },
+                  "public_net": {
+                    "title": "LoadBalancerCreatePublicNet",
+                    "description": "Public network options of the Load Balancer.\n\nOnly allowed if the public interface is enabled.\n",
+                    "type": "object",
+                    "properties": {
+                      "ipv4": {
+                        "description": "ID of an existing [Primary IP](#tag/primary-ips) of type `ipv4` to assign to the Load Balancer.\n\nThe [Primary IP](#tag/primary-ips) must be unassigned, must not be blocked and must be bound to the\nsame Location as the Load Balancer.\n\nOmit or set to `null` to get a system managed IP address instead. System managed IP addresses are\nnot [Primary IPs](#tag/primary-ips) and are created and deleted together with the Load Balancer.\n",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 9007199254740991,
+                        "example": 42
+                      },
+                      "ipv6": {
+                        "description": "ID of an existing [Primary IP](#tag/primary-ips) of type `ipv6` to assign to the Load Balancer.\n\nThe [Primary IP](#tag/primary-ips) must be unassigned, must not be blocked and must be bound to the\nsame Location as the Load Balancer.\n\nOmit or set to `null` to get a system managed IP address instead. System managed IP addresses are\nnot [Primary IPs](#tag/primary-ips) and are created and deleted together with the Load Balancer.\n",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 9007199254740991,
+                        "example": 42
+                      }
+                    }
+                  },
                   "network": {
                     "description": "ID of the network the Load Balancer should be attached to on creation.",
                     "type": "integer",
@@ -21557,6 +21622,17 @@
                               "description": "IP address (v4).",
                               "type": "object",
                               "properties": {
+                                "id": {
+                                  "description": "ID of the [Primary IP](#tag/primary-ips) assigned to this Load Balancer.\n\n`null` if the IP address is still managed by the system and is not a [Primary IP](#tag/primary-ips) yet.\n",
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "format": "int64",
+                                  "minimum": 1,
+                                  "maximum": 9007199254740991,
+                                  "example": 42
+                                },
                                 "ip": {
                                   "description": "IP address (v4) of this Load Balancer.",
                                   "type": [
@@ -21564,6 +21640,11 @@
                                     "null"
                                   ],
                                   "example": "1.2.3.4"
+                                },
+                                "blocked": {
+                                  "description": "Whether the IP is blocked by our abuse department.",
+                                  "type": "boolean",
+                                  "example": false
                                 },
                                 "dns_ptr": {
                                   "description": "Reverse DNS PTR entry for the IPv4 address of this Load Balancer.",
@@ -21575,7 +21656,9 @@
                                 }
                               },
                               "required": [
+                                "id",
                                 "ip",
+                                "blocked",
                                 "dns_ptr"
                               ]
                             },
@@ -21583,6 +21666,17 @@
                               "description": "IP address (v6).",
                               "type": "object",
                               "properties": {
+                                "id": {
+                                  "description": "ID of the [Primary IP](#tag/primary-ips) assigned to this Load Balancer.\n\n`null` if the IP address is still managed by the system and is not a [Primary IP](#tag/primary-ips) yet.\n",
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "format": "int64",
+                                  "minimum": 1,
+                                  "maximum": 9007199254740991,
+                                  "example": 42
+                                },
                                 "ip": {
                                   "description": "IP address (v6) of this Load Balancer.",
                                   "type": [
@@ -21590,6 +21684,11 @@
                                     "null"
                                   ],
                                   "example": "2001:db8::1"
+                                },
+                                "blocked": {
+                                  "description": "Whether the IP is blocked by our abuse department.",
+                                  "type": "boolean",
+                                  "example": false
                                 },
                                 "dns_ptr": {
                                   "description": "Reverse DNS PTR entry for the IPv6 address of this Load Balancer.",
@@ -21601,7 +21700,9 @@
                                 }
                               },
                               "required": [
+                                "id",
                                 "ip",
+                                "blocked",
                                 "dns_ptr"
                               ]
                             }
@@ -23079,11 +23180,15 @@
                         "public_net": {
                           "enabled": false,
                           "ipv4": {
+                            "id": 42,
                             "ip": "1.2.3.4",
+                            "blocked": false,
                             "dns_ptr": "lb1.example.com"
                           },
                           "ipv6": {
+                            "id": 43,
                             "ip": "2001:db8::1",
+                            "blocked": false,
                             "dns_ptr": "lb1.example.com"
                           }
                         },
@@ -24084,6 +24189,17 @@
                               "description": "IP address (v4).",
                               "type": "object",
                               "properties": {
+                                "id": {
+                                  "description": "ID of the [Primary IP](#tag/primary-ips) assigned to this Load Balancer.\n\n`null` if the IP address is still managed by the system and is not a [Primary IP](#tag/primary-ips) yet.\n",
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "format": "int64",
+                                  "minimum": 1,
+                                  "maximum": 9007199254740991,
+                                  "example": 42
+                                },
                                 "ip": {
                                   "description": "IP address (v4) of this Load Balancer.",
                                   "type": [
@@ -24091,6 +24207,11 @@
                                     "null"
                                   ],
                                   "example": "1.2.3.4"
+                                },
+                                "blocked": {
+                                  "description": "Whether the IP is blocked by our abuse department.",
+                                  "type": "boolean",
+                                  "example": false
                                 },
                                 "dns_ptr": {
                                   "description": "Reverse DNS PTR entry for the IPv4 address of this Load Balancer.",
@@ -24102,7 +24223,9 @@
                                 }
                               },
                               "required": [
+                                "id",
                                 "ip",
+                                "blocked",
                                 "dns_ptr"
                               ]
                             },
@@ -24110,6 +24233,17 @@
                               "description": "IP address (v6).",
                               "type": "object",
                               "properties": {
+                                "id": {
+                                  "description": "ID of the [Primary IP](#tag/primary-ips) assigned to this Load Balancer.\n\n`null` if the IP address is still managed by the system and is not a [Primary IP](#tag/primary-ips) yet.\n",
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "format": "int64",
+                                  "minimum": 1,
+                                  "maximum": 9007199254740991,
+                                  "example": 42
+                                },
                                 "ip": {
                                   "description": "IP address (v6) of this Load Balancer.",
                                   "type": [
@@ -24117,6 +24251,11 @@
                                     "null"
                                   ],
                                   "example": "2001:db8::1"
+                                },
+                                "blocked": {
+                                  "description": "Whether the IP is blocked by our abuse department.",
+                                  "type": "boolean",
+                                  "example": false
                                 },
                                 "dns_ptr": {
                                   "description": "Reverse DNS PTR entry for the IPv6 address of this Load Balancer.",
@@ -24128,7 +24267,9 @@
                                 }
                               },
                               "required": [
+                                "id",
                                 "ip",
+                                "blocked",
                                 "dns_ptr"
                               ]
                             }
@@ -25698,6 +25839,17 @@
                               "description": "IP address (v4).",
                               "type": "object",
                               "properties": {
+                                "id": {
+                                  "description": "ID of the [Primary IP](#tag/primary-ips) assigned to this Load Balancer.\n\n`null` if the IP address is still managed by the system and is not a [Primary IP](#tag/primary-ips) yet.\n",
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "format": "int64",
+                                  "minimum": 1,
+                                  "maximum": 9007199254740991,
+                                  "example": 42
+                                },
                                 "ip": {
                                   "description": "IP address (v4) of this Load Balancer.",
                                   "type": [
@@ -25705,6 +25857,11 @@
                                     "null"
                                   ],
                                   "example": "1.2.3.4"
+                                },
+                                "blocked": {
+                                  "description": "Whether the IP is blocked by our abuse department.",
+                                  "type": "boolean",
+                                  "example": false
                                 },
                                 "dns_ptr": {
                                   "description": "Reverse DNS PTR entry for the IPv4 address of this Load Balancer.",
@@ -25716,7 +25873,9 @@
                                 }
                               },
                               "required": [
+                                "id",
                                 "ip",
+                                "blocked",
                                 "dns_ptr"
                               ]
                             },
@@ -25724,6 +25883,17 @@
                               "description": "IP address (v6).",
                               "type": "object",
                               "properties": {
+                                "id": {
+                                  "description": "ID of the [Primary IP](#tag/primary-ips) assigned to this Load Balancer.\n\n`null` if the IP address is still managed by the system and is not a [Primary IP](#tag/primary-ips) yet.\n",
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "format": "int64",
+                                  "minimum": 1,
+                                  "maximum": 9007199254740991,
+                                  "example": 42
+                                },
                                 "ip": {
                                   "description": "IP address (v6) of this Load Balancer.",
                                   "type": [
@@ -25731,6 +25901,11 @@
                                     "null"
                                   ],
                                   "example": "2001:db8::1"
+                                },
+                                "blocked": {
+                                  "description": "Whether the IP is blocked by our abuse department.",
+                                  "type": "boolean",
+                                  "example": false
                                 },
                                 "dns_ptr": {
                                   "description": "Reverse DNS PTR entry for the IPv6 address of this Load Balancer.",
@@ -25742,7 +25917,9 @@
                                 }
                               },
                               "required": [
+                                "id",
                                 "ip",
+                                "blocked",
                                 "dns_ptr"
                               ]
                             }
@@ -27111,11 +27288,15 @@
                         "public_net": {
                           "enabled": false,
                           "ipv4": {
+                            "id": 42,
                             "ip": "1.2.3.4",
+                            "blocked": false,
                             "dns_ptr": "lb1.example.com"
                           },
                           "ipv6": {
+                            "id": 43,
                             "ip": "2001:db8::1",
+                            "blocked": false,
                             "dns_ptr": "lb1.example.com"
                           }
                         },
@@ -27396,8 +27577,128 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Request succeeded."
+          "201": {
+            "description": "Request succeeded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "action": {
+                      "title": "Action",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "ID of the [Action](#description/actions).",
+                          "type": "integer",
+                          "format": "int64",
+                          "minimum": 1,
+                          "maximum": 9007199254740991,
+                          "example": 42
+                        },
+                        "command": {
+                          "description": "Command executed in the Action.",
+                          "type": "string",
+                          "example": "start_resource"
+                        },
+                        "status": {
+                          "description": "Status of the Action.",
+                          "type": "string",
+                          "enum": [
+                            "running",
+                            "success",
+                            "error"
+                          ]
+                        },
+                        "started": {
+                          "description": "Point in time when the Action was started (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2016-01-30T23:55:00Z"
+                        },
+                        "finished": {
+                          "description": "Point in time when the Action was finished (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format). Only set if the Action is finished otherwise null.",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "format": "date-time",
+                          "example": "2016-01-30T23:55:00Z"
+                        },
+                        "progress": {
+                          "description": "Progress of the Action in percent.",
+                          "type": "integer",
+                          "format": "int32",
+                          "example": 100
+                        },
+                        "resources": {
+                          "description": "Resources the Action relates to.",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "description": "ID of the Resource.",
+                                "type": "integer",
+                                "format": "int64",
+                                "minimum": 1,
+                                "maximum": 9007199254740991,
+                                "example": 42
+                              },
+                              "type": {
+                                "description": "Type of the Resource.",
+                                "type": "string",
+                                "example": "server"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "type"
+                            ]
+                          }
+                        },
+                        "error": {
+                          "description": "Error message for the Action if an error occurred, otherwise null.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "code": {
+                              "description": "Fixed error code for machines.",
+                              "type": "string",
+                              "example": "action_failed"
+                            },
+                            "message": {
+                              "description": "Error message for humans.",
+                              "type": "string",
+                              "example": "Action failed"
+                            }
+                          },
+                          "required": [
+                            "code",
+                            "message"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "command",
+                        "status",
+                        "progress",
+                        "started",
+                        "finished",
+                        "resources",
+                        "error"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "action"
+                  ]
+                }
+              }
+            }
           },
           "4xx": {
             "description": "Request failed with a user error.",
