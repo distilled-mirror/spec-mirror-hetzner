@@ -63496,13 +63496,40 @@
                             "example": "my-resource"
                           },
                           "server": {
-                            "description": "ID of the Server the Volume is attached to, null if it is not attached at all.",
+                            "deprecated": true,
+                            "description": "This field is deprecated, use the `assignee` field instead.\n\nID of the Server the Volume is attached to, null if it is not attached at all.\n",
                             "type": [
                               "integer",
                               "null"
                             ],
                             "format": "int64",
                             "example": 12
+                          },
+                          "assignee": {
+                            "description": "Resource the Volume is attached to, null if it is not attached at all.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "id": {
+                                "description": "ID of the Resource.",
+                                "type": "integer",
+                                "format": "int64",
+                                "minimum": 1,
+                                "maximum": 9007199254740991,
+                                "example": 42
+                              },
+                              "type": {
+                                "description": "Type of the Resource.",
+                                "type": "string",
+                                "example": "server"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "type"
+                            ]
                           },
                           "location": {
                             "description": "Location of the Volume. Volume can only be attached to Servers in the same Location.",
@@ -63626,6 +63653,7 @@
                           "created",
                           "name",
                           "server",
+                          "assignee",
                           "location",
                           "size",
                           "linux_device",
@@ -63890,9 +63918,33 @@
                     "example": "nbg1"
                   },
                   "server": {
-                    "description": "Server to which to attach the Volume once it's created (Volume will be created in the same Location as the server).",
+                    "deprecated": true,
+                    "description": "This field is deprecated, use the `assignee` field with `server` as the `type` instead.\n\nServer to which to attach the Volume once it's created (Volume will be created in the same Location as the server).\n",
                     "type": "integer",
                     "format": "int64"
+                  },
+                  "assignee": {
+                    "description": "Resource to which to attach the Volume once it's created (Volume will be created in the same Location as the resource).",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "description": "ID of the Resource.",
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 9007199254740991,
+                        "example": 42
+                      },
+                      "type": {
+                        "description": "Type of the Resource.",
+                        "type": "string",
+                        "example": "server"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "type"
+                    ]
                   }
                 },
                 "required": [
@@ -63948,13 +64000,40 @@
                           "example": "my-resource"
                         },
                         "server": {
-                          "description": "ID of the Server the Volume is attached to, null if it is not attached at all.",
+                          "deprecated": true,
+                          "description": "This field is deprecated, use the `assignee` field instead.\n\nID of the Server the Volume is attached to, null if it is not attached at all.\n",
                           "type": [
                             "integer",
                             "null"
                           ],
                           "format": "int64",
                           "example": 12
+                        },
+                        "assignee": {
+                          "description": "Resource the Volume is attached to, null if it is not attached at all.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "id": {
+                              "description": "ID of the Resource.",
+                              "type": "integer",
+                              "format": "int64",
+                              "minimum": 1,
+                              "maximum": 9007199254740991,
+                              "example": 42
+                            },
+                            "type": {
+                              "description": "Type of the Resource.",
+                              "type": "string",
+                              "example": "server"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type"
+                          ]
                         },
                         "location": {
                           "description": "Location of the Volume. Volume can only be attached to Servers in the same Location.",
@@ -64078,6 +64157,7 @@
                         "created",
                         "name",
                         "server",
+                        "assignee",
                         "location",
                         "size",
                         "linux_device",
@@ -64321,6 +64401,10 @@
                         "created": "2016-01-30T23:50:11Z",
                         "name": "database-storage",
                         "server": 12,
+                        "assignee": {
+                          "id": 12,
+                          "type": "server"
+                        },
                         "location": {
                           "id": 1,
                           "name": "fsn1",
@@ -65245,13 +65329,40 @@
                           "example": "my-resource"
                         },
                         "server": {
-                          "description": "ID of the Server the Volume is attached to, null if it is not attached at all.",
+                          "deprecated": true,
+                          "description": "This field is deprecated, use the `assignee` field instead.\n\nID of the Server the Volume is attached to, null if it is not attached at all.\n",
                           "type": [
                             "integer",
                             "null"
                           ],
                           "format": "int64",
                           "example": 12
+                        },
+                        "assignee": {
+                          "description": "Resource the Volume is attached to, null if it is not attached at all.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "id": {
+                              "description": "ID of the Resource.",
+                              "type": "integer",
+                              "format": "int64",
+                              "minimum": 1,
+                              "maximum": 9007199254740991,
+                              "example": 42
+                            },
+                            "type": {
+                              "description": "Type of the Resource.",
+                              "type": "string",
+                              "example": "server"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type"
+                          ]
                         },
                         "location": {
                           "description": "Location of the Volume. Volume can only be attached to Servers in the same Location.",
@@ -65375,6 +65486,7 @@
                         "created",
                         "name",
                         "server",
+                        "assignee",
                         "location",
                         "size",
                         "linux_device",
@@ -65592,13 +65704,40 @@
                           "example": "my-resource"
                         },
                         "server": {
-                          "description": "ID of the Server the Volume is attached to, null if it is not attached at all.",
+                          "deprecated": true,
+                          "description": "This field is deprecated, use the `assignee` field instead.\n\nID of the Server the Volume is attached to, null if it is not attached at all.\n",
                           "type": [
                             "integer",
                             "null"
                           ],
                           "format": "int64",
                           "example": 12
+                        },
+                        "assignee": {
+                          "description": "Resource the Volume is attached to, null if it is not attached at all.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "id": {
+                              "description": "ID of the Resource.",
+                              "type": "integer",
+                              "format": "int64",
+                              "minimum": 1,
+                              "maximum": 9007199254740991,
+                              "example": 42
+                            },
+                            "type": {
+                              "description": "Type of the Resource.",
+                              "type": "string",
+                              "example": "server"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type"
+                          ]
                         },
                         "location": {
                           "description": "Location of the Volume. Volume can only be attached to Servers in the same Location.",
@@ -65722,6 +65861,7 @@
                         "created",
                         "name",
                         "server",
+                        "assignee",
                         "location",
                         "size",
                         "linux_device",
@@ -65744,6 +65884,10 @@
                         "created": "2016-01-30T23:50:11Z",
                         "name": "database-storage",
                         "server": 12,
+                        "assignee": {
+                          "id": 12,
+                          "type": "server"
+                        },
                         "location": {
                           "id": 1,
                           "name": "fsn1",
@@ -66477,8 +66621,8 @@
     "/volumes/{id}/actions/attach": {
       "post": {
         "operationId": "attach_volume",
-        "summary": "Attach Volume to a Server",
-        "description": "Attaches a Volume to a Server. Works only if the Server is in the same Location as the Volume.\n",
+        "summary": "Attach Volume to a Resource",
+        "description": "Attaches a Volume to a Resource. Works only if the Resource is in the same Location as the Volume.\n",
         "tags": [
           "Volume Actions"
         ],
@@ -66507,10 +66651,34 @@
                 "type": "object",
                 "properties": {
                   "server": {
-                    "description": "ID of the Server the Volume will be attached to.",
+                    "deprecated": true,
+                    "description": "This field is deprecated, use the `assignee` field with `server` as the `type` instead.\n\nID of the Server the Volume will be attached to.\n",
                     "type": "integer",
                     "format": "int64",
                     "example": 43
+                  },
+                  "assignee": {
+                    "description": "Resource the Volume will be attached to.",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "description": "ID of the Resource.",
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1,
+                        "maximum": 9007199254740991,
+                        "example": 42
+                      },
+                      "type": {
+                        "description": "Type of the Resource.",
+                        "type": "string",
+                        "example": "server"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "type"
+                    ]
                   },
                   "automount": {
                     "description": "Auto-mount the Volume after attaching it.",
@@ -66519,7 +66687,7 @@
                   }
                 },
                 "required": [
-                  "server"
+                  "assignee"
                 ]
               }
             }
@@ -67112,7 +67280,7 @@
       "post": {
         "operationId": "detach_volume",
         "summary": "Detach Volume",
-        "description": "Detaches a Volume from the Server it’s attached to. You may attach it to a Server again at a later time.\n",
+        "description": "Detaches a Volume from the Resource it’s attached to. You may attach it to a Resource again at a later time.\n",
         "tags": [
           "Volume Actions"
         ],
