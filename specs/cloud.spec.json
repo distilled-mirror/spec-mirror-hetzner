@@ -69,7 +69,7 @@
     },
     {
       "name": "Locations",
-      "description": "Datacenters are organized by Locations. Datacenters in the same Location are connected with very low latency links.\n"
+      "description": "Locations are geographic sites where resources are hosted at. A Location belongs to a Network Zone.\n"
     },
     {
       "name": "Networks",
@@ -14780,16 +14780,6 @@
                               "delete"
                             ]
                           },
-                          "deprecated": {
-                            "deprecated": true,
-                            "description": "**Deprecated:** This field is deprecated, use the deprecation object instead.\n\nPoint in time when the Image is considered to be deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                            "type": [
-                              "string",
-                              "null"
-                            ],
-                            "format": "date-time",
-                            "example": "2018-02-28T00:00:00Z"
-                          },
                           "deprecation": {
                             "title": "DeprecationInfo",
                             "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -14860,7 +14850,6 @@
                           "os_flavor",
                           "os_version",
                           "protection",
-                          "deprecated",
                           "deprecation",
                           "deleted",
                           "labels",
@@ -15920,16 +15909,6 @@
                             "delete"
                           ]
                         },
-                        "deprecated": {
-                          "deprecated": true,
-                          "description": "**Deprecated:** This field is deprecated, use the deprecation object instead.\n\nPoint in time when the Image is considered to be deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                          "type": [
-                            "string",
-                            "null"
-                          ],
-                          "format": "date-time",
-                          "example": "2018-02-28T00:00:00Z"
-                        },
                         "deprecation": {
                           "title": "DeprecationInfo",
                           "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -16000,7 +15979,6 @@
                         "os_flavor",
                         "os_version",
                         "protection",
-                        "deprecated",
                         "deprecation",
                         "deleted",
                         "labels",
@@ -16335,16 +16313,6 @@
                             "delete"
                           ]
                         },
-                        "deprecated": {
-                          "deprecated": true,
-                          "description": "**Deprecated:** This field is deprecated, use the deprecation object instead.\n\nPoint in time when the Image is considered to be deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                          "type": [
-                            "string",
-                            "null"
-                          ],
-                          "format": "date-time",
-                          "example": "2018-02-28T00:00:00Z"
-                        },
                         "deprecation": {
                           "title": "DeprecationInfo",
                           "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -16415,7 +16383,6 @@
                         "os_flavor",
                         "os_version",
                         "protection",
-                        "deprecated",
                         "deprecation",
                         "deleted",
                         "labels",
@@ -16447,7 +16414,6 @@
                         "protection": {
                           "delete": false
                         },
-                        "deprecated": null,
                         "deprecation": null,
                         "deleted": null,
                         "labels": {
@@ -18461,16 +18427,6 @@
                             "format": "int64",
                             "example": 10
                           },
-                          "deprecated": {
-                            "deprecated": true,
-                            "description": "**Deprecated:** This field is deprecated. Use the `deprecation` object instead.\n\nPoint in time when the Load Balancer type is deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                            "type": [
-                              "string",
-                              "null"
-                            ],
-                            "format": "date-time",
-                            "example": "2016-01-30T23:50:00Z"
-                          },
                           "deprecation": {
                             "title": "DeprecationInfo",
                             "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -18599,7 +18555,6 @@
                           "max_services",
                           "max_targets",
                           "max_assigned_certificates",
-                          "deprecated",
                           "deprecation",
                           "prices"
                         ]
@@ -18882,16 +18837,6 @@
                           "format": "int64",
                           "example": 10
                         },
-                        "deprecated": {
-                          "deprecated": true,
-                          "description": "**Deprecated:** This field is deprecated. Use the `deprecation` object instead.\n\nPoint in time when the Load Balancer type is deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                          "type": [
-                            "string",
-                            "null"
-                          ],
-                          "format": "date-time",
-                          "example": "2016-01-30T23:50:00Z"
-                        },
                         "deprecation": {
                           "title": "DeprecationInfo",
                           "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -19020,7 +18965,6 @@
                         "max_services",
                         "max_targets",
                         "max_assigned_certificates",
-                        "deprecated",
                         "deprecation",
                         "prices"
                       ]
@@ -19486,16 +19430,6 @@
                                 "format": "int64",
                                 "example": 10
                               },
-                              "deprecated": {
-                                "deprecated": true,
-                                "description": "**Deprecated:** This field is deprecated. Use the `deprecation` object instead.\n\nPoint in time when the Load Balancer type is deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                                "type": [
-                                  "string",
-                                  "null"
-                                ],
-                                "format": "date-time",
-                                "example": "2016-01-30T23:50:00Z"
-                              },
                               "deprecation": {
                                 "title": "DeprecationInfo",
                                 "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -19624,7 +19558,6 @@
                               "max_services",
                               "max_targets",
                               "max_assigned_certificates",
-                              "deprecated",
                               "deprecation",
                               "prices"
                             ]
@@ -21970,16 +21903,6 @@
                               "format": "int64",
                               "example": 10
                             },
-                            "deprecated": {
-                              "deprecated": true,
-                              "description": "**Deprecated:** This field is deprecated. Use the `deprecation` object instead.\n\nPoint in time when the Load Balancer type is deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                              "type": [
-                                "string",
-                                "null"
-                              ],
-                              "format": "date-time",
-                              "example": "2016-01-30T23:50:00Z"
-                            },
                             "deprecation": {
                               "title": "DeprecationInfo",
                               "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -22108,7 +22031,6 @@
                             "max_services",
                             "max_targets",
                             "max_assigned_certificates",
-                            "deprecated",
                             "deprecation",
                             "prices"
                           ]
@@ -23344,7 +23266,6 @@
                           "max_services": 5,
                           "max_targets": 25,
                           "max_assigned_certificates": 10,
-                          "deprecated": "2016-01-30T23:50:00Z",
                           "deprecation": null,
                           "prices": [
                             {
@@ -24545,16 +24466,6 @@
                               "format": "int64",
                               "example": 10
                             },
-                            "deprecated": {
-                              "deprecated": true,
-                              "description": "**Deprecated:** This field is deprecated. Use the `deprecation` object instead.\n\nPoint in time when the Load Balancer type is deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                              "type": [
-                                "string",
-                                "null"
-                              ],
-                              "format": "date-time",
-                              "example": "2016-01-30T23:50:00Z"
-                            },
                             "deprecation": {
                               "title": "DeprecationInfo",
                               "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -24683,7 +24594,6 @@
                             "max_services",
                             "max_targets",
                             "max_assigned_certificates",
-                            "deprecated",
                             "deprecation",
                             "prices"
                           ]
@@ -26195,16 +26105,6 @@
                               "format": "int64",
                               "example": 10
                             },
-                            "deprecated": {
-                              "deprecated": true,
-                              "description": "**Deprecated:** This field is deprecated. Use the `deprecation` object instead.\n\nPoint in time when the Load Balancer type is deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                              "type": [
-                                "string",
-                                "null"
-                              ],
-                              "format": "date-time",
-                              "example": "2016-01-30T23:50:00Z"
-                            },
                             "deprecation": {
                               "title": "DeprecationInfo",
                               "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -26333,7 +26233,6 @@
                             "max_services",
                             "max_targets",
                             "max_assigned_certificates",
-                            "deprecated",
                             "deprecation",
                             "prices"
                           ]
@@ -27460,7 +27359,6 @@
                           "max_services": 5,
                           "max_targets": 25,
                           "max_assigned_certificates": 10,
-                          "deprecated": "2016-01-30T23:50:00Z",
                           "deprecation": null,
                           "prices": [
                             {
@@ -37707,7 +37605,7 @@
       "post": {
         "operationId": "change_network_ip_range",
         "summary": "Change IP range of a Network",
-        "description": "Changes the IP range of a [Network](#tag/networks).\n\nThe following restrictions apply to changing the IP range:\n- IP ranges can only be extended and never shrunk.\n- IPs can only be added to the end of the existing range, therefore only the netmask is allowed to be changed.\n\nTo update the routes on the connected [Servers](#tag/servers), they need to be rebooted or the routes to be updated manually.\n\nFor example if the [Network](#tag/networks) has a range of `10.0.0.0/16` to extend it the new range has to start with the IP `10.0.0.0` as well. The netmask `/16` can be changed to a smaller one then `16` therefore increasing the IP range. A valid entry would be `10.0.0.0/15`, `10.0.0.0/14` or `10.0.0.0/13` and so on.\n\nIf a change is currently being performed on this [Network](#tag/networks), a error response with code `conflict` will be returned.\n",
+        "description": "Changes the IP range of a [Network](#tag/networks).\n\nThe following restrictions apply to changing the IP range:\n- IP ranges can only be extended and never shrunk.\n- IPs can only be added to the end of the existing range, therefore only the netmask is allowed to be changed.\n- The Network must not have any attached members.\n\nTo update the routes on the connected [Servers](#tag/servers), they need to be rebooted or the routes to be updated manually.\n\nFor example if the [Network](#tag/networks) has a range of `10.0.0.0/16` to extend it the new range has to start with the IP `10.0.0.0` as well. The netmask `/16` can be changed to a smaller one then `16` therefore increasing the IP range. A valid entry would be `10.0.0.0/15`, `10.0.0.0/14` or `10.0.0.0/13` and so on.\n\nIf a change is currently being performed on this [Network](#tag/networks), an error response with code `conflict` will be returned. If the Network has any attached members, an error response with code `service_error` will be returned.\n",
         "tags": [
           "Network Actions"
         ],
@@ -46462,11 +46360,6 @@
                             "type": "number",
                             "example": 80
                           },
-                          "deprecated": {
-                            "description": "This field is deprecated. Use the deprecation object instead.",
-                            "type": "boolean",
-                            "example": false
-                          },
                           "prices": {
                             "description": "Price per [Location](#tag/locations).",
                             "type": "array",
@@ -46692,7 +46585,6 @@
                           "cores",
                           "memory",
                           "disk",
-                          "deprecated",
                           "prices",
                           "storage_type",
                           "cpu_type",
@@ -46969,11 +46861,6 @@
                           "type": "number",
                           "example": 80
                         },
-                        "deprecated": {
-                          "description": "This field is deprecated. Use the deprecation object instead.",
-                          "type": "boolean",
-                          "example": false
-                        },
                         "prices": {
                           "description": "Price per [Location](#tag/locations).",
                           "type": "array",
@@ -47199,7 +47086,6 @@
                         "cores",
                         "memory",
                         "disk",
-                        "deprecated",
                         "prices",
                         "storage_type",
                         "cpu_type",
@@ -47703,11 +47589,6 @@
                                 "type": "number",
                                 "example": 80
                               },
-                              "deprecated": {
-                                "description": "This field is deprecated. Use the deprecation object instead.",
-                                "type": "boolean",
-                                "example": false
-                              },
                               "prices": {
                                 "description": "Price per [Location](#tag/locations).",
                                 "type": "array",
@@ -47933,7 +47814,6 @@
                               "cores",
                               "memory",
                               "disk",
-                              "deprecated",
                               "prices",
                               "storage_type",
                               "cpu_type",
@@ -48147,16 +48027,6 @@
                                   "delete"
                                 ]
                               },
-                              "deprecated": {
-                                "deprecated": true,
-                                "description": "**Deprecated:** This field is deprecated, use the deprecation object instead.\n\nPoint in time when the Image is considered to be deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                                "type": [
-                                  "string",
-                                  "null"
-                                ],
-                                "format": "date-time",
-                                "example": "2018-02-28T00:00:00Z"
-                              },
                               "deprecation": {
                                 "title": "DeprecationInfo",
                                 "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -48227,7 +48097,6 @@
                               "os_flavor",
                               "os_version",
                               "protection",
-                              "deprecated",
                               "deprecation",
                               "deleted",
                               "labels",
@@ -49136,11 +49005,6 @@
                               "type": "number",
                               "example": 80
                             },
-                            "deprecated": {
-                              "description": "This field is deprecated. Use the deprecation object instead.",
-                              "type": "boolean",
-                              "example": false
-                            },
                             "prices": {
                               "description": "Price per [Location](#tag/locations).",
                               "type": "array",
@@ -49366,7 +49230,6 @@
                             "cores",
                             "memory",
                             "disk",
-                            "deprecated",
                             "prices",
                             "storage_type",
                             "cpu_type",
@@ -49580,16 +49443,6 @@
                                 "delete"
                               ]
                             },
-                            "deprecated": {
-                              "deprecated": true,
-                              "description": "**Deprecated:** This field is deprecated, use the deprecation object instead.\n\nPoint in time when the Image is considered to be deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                              "type": [
-                                "string",
-                                "null"
-                              ],
-                              "format": "date-time",
-                              "example": "2018-02-28T00:00:00Z"
-                            },
                             "deprecation": {
                               "title": "DeprecationInfo",
                               "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -49660,7 +49513,6 @@
                             "os_flavor",
                             "os_version",
                             "protection",
-                            "deprecated",
                             "deprecation",
                             "deleted",
                             "labels",
@@ -50227,7 +50079,6 @@
                           "cores": 2,
                           "memory": 4,
                           "disk": 80,
-                          "deprecated": true,
                           "prices": [
                             {
                               "location": "fsn1",
@@ -50299,7 +50150,6 @@
                           "protection": {
                             "delete": false
                           },
-                          "deprecated": null,
                           "deprecation": null,
                           "deleted": null,
                           "labels": {
@@ -51459,11 +51309,6 @@
                               "type": "number",
                               "example": 80
                             },
-                            "deprecated": {
-                              "description": "This field is deprecated. Use the deprecation object instead.",
-                              "type": "boolean",
-                              "example": false
-                            },
                             "prices": {
                               "description": "Price per [Location](#tag/locations).",
                               "type": "array",
@@ -51689,7 +51534,6 @@
                             "cores",
                             "memory",
                             "disk",
-                            "deprecated",
                             "prices",
                             "storage_type",
                             "cpu_type",
@@ -51903,16 +51747,6 @@
                                 "delete"
                               ]
                             },
-                            "deprecated": {
-                              "deprecated": true,
-                              "description": "**Deprecated:** This field is deprecated, use the deprecation object instead.\n\nPoint in time when the Image is considered to be deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                              "type": [
-                                "string",
-                                "null"
-                              ],
-                              "format": "date-time",
-                              "example": "2018-02-28T00:00:00Z"
-                            },
                             "deprecation": {
                               "title": "DeprecationInfo",
                               "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -51983,7 +51817,6 @@
                             "os_flavor",
                             "os_version",
                             "protection",
-                            "deprecated",
                             "deprecation",
                             "deleted",
                             "labels",
@@ -52699,11 +52532,6 @@
                               "type": "number",
                               "example": 80
                             },
-                            "deprecated": {
-                              "description": "This field is deprecated. Use the deprecation object instead.",
-                              "type": "boolean",
-                              "example": false
-                            },
                             "prices": {
                               "description": "Price per [Location](#tag/locations).",
                               "type": "array",
@@ -52929,7 +52757,6 @@
                             "cores",
                             "memory",
                             "disk",
-                            "deprecated",
                             "prices",
                             "storage_type",
                             "cpu_type",
@@ -53143,16 +52970,6 @@
                                 "delete"
                               ]
                             },
-                            "deprecated": {
-                              "deprecated": true,
-                              "description": "**Deprecated:** This field is deprecated, use the deprecation object instead.\n\nPoint in time when the Image is considered to be deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                              "type": [
-                                "string",
-                                "null"
-                              ],
-                              "format": "date-time",
-                              "example": "2018-02-28T00:00:00Z"
-                            },
                             "deprecation": {
                               "title": "DeprecationInfo",
                               "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -53223,7 +53040,6 @@
                             "os_flavor",
                             "os_version",
                             "protection",
-                            "deprecated",
                             "deprecation",
                             "deleted",
                             "labels",
@@ -56778,16 +56594,6 @@
                             "delete"
                           ]
                         },
-                        "deprecated": {
-                          "deprecated": true,
-                          "description": "**Deprecated:** This field is deprecated, use the deprecation object instead.\n\nPoint in time when the Image is considered to be deprecated (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format).\n",
-                          "type": [
-                            "string",
-                            "null"
-                          ],
-                          "format": "date-time",
-                          "example": "2018-02-28T00:00:00Z"
-                        },
                         "deprecation": {
                           "title": "DeprecationInfo",
                           "description": "Describes if, when and how the resource is deprecated. If this field is\nset to `null` the resource is not deprecated. If a value is set, it is\nconsidered deprecated.\n",
@@ -56858,7 +56664,6 @@
                         "os_flavor",
                         "os_version",
                         "protection",
-                        "deprecated",
                         "deprecation",
                         "deleted",
                         "labels",
@@ -56998,7 +56803,6 @@
                         "protection": {
                           "delete": false
                         },
-                        "deprecated": null,
                         "deprecation": null,
                         "deleted": null,
                         "labels": {
