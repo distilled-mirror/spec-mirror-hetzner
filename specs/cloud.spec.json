@@ -4392,7 +4392,7 @@
         "deprecated": true,
         "operationId": "list_datacenters",
         "summary": "List Data Centers",
-        "description": "**Deprecated:** This endpoint is deprecated as of 01 June 2026 and will be removed after 01 October 2026.\n\nReturns all [Data Centers](#tag/data-centers).\n",
+        "description": "**Deprecated:** This endpoint was deprecated on 01 June 2026 and removed on 01 October 2026. It now returns `410 Gone`.\n\nReturns all [Data Centers](#tag/data-centers).\n",
         "tags": [
           "Data Centers"
         ],
@@ -4832,7 +4832,7 @@
         "deprecated": true,
         "operationId": "get_datacenter",
         "summary": "Get a Data Center",
-        "description": "**Deprecated:** This endpoint is deprecated as of 01 June 2026 and will be removed after 01 October 2026.\n\nReturns a single [Data Center](#tag/data-centers).\n",
+        "description": "**Deprecated:** This endpoint was deprecated on 01 June 2026 and removed on 01 October 2026. It now returns `410 Gone`.\n\nReturns a single [Data Center](#tag/data-centers).\n",
         "tags": [
           "Data Centers"
         ],
